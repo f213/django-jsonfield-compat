@@ -2,13 +2,8 @@ import json
 import six
 from functools import partial
 
-try:
-    from django.contrib.postgres.fields import JSONField as NativeJSONField
-except ImportError:  # pragma: no cover
-    # If using Django 1.8, don't worry about trying to be correct.
-    # We won't be using the native field.
-    NativeJSONField = object
 
+from django.db.models import JSONField as NativeJSONField
 from django.conf import settings
 from django.utils.module_loading import import_string
 from psycopg2.extras import Json
